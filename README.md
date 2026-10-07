@@ -1,36 +1,26 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Giải mã Mã QR — web tĩnh tương tác
 
-## Getting Started
+Trang web một trang trình bày toàn bộ nội dung tài liệu [`doc/Kien_thuc_ma_QR.docx`](doc/Kien_thuc_ma_QR.docx)
+(15 chương: lịch sử, cấu trúc, phiên bản, chế độ mã hóa, Reed–Solomon, mặt nạ, quy trình tạo/đọc, biến thể,
+ứng dụng, bảo mật, thiết kế, lập trình, so sánh, hỏi đáp, thuật ngữ) kèm các thí nghiệm tương tác:
 
-First, run the development server:
+- **Phòng thí nghiệm 9 bước** (chương 7): nhập chữ bất kỳ và xem từng bước tạo mã QR — phân tích ký tự,
+  chọn phiên bản, chuỗi bit, phép chia đa thức Reed–Solomon, đan xen, mẫu chức năng, xếp bit zíc-zắc,
+  chấm điểm 8 mặt nạ, ghi thông tin định dạng; tải PNG/SVG.
+- **Thử phá hỏng mã QR** (chương 5): tô bẩn, xóa, chèn logo và xem bộ giải mã thật (jsQR) có còn đọc được.
+- Giải phẫu mã phiên bản 7, thanh trượt 40 phiên bản, máy quét bằng ảnh/camera, bộ tạo mã Wi-Fi/vCard/…,
+  trò chơi phát hiện lừa đảo, thử độ tương phản màu, bài đố cuối.
+
+Bộ mã hóa QR được viết riêng trong [`lib/qr/`](lib/qr/) để hiển thị được mọi bước trung gian; nó đã được đối
+chiếu từng module với thư viện `qrcode` và giải mã lại bằng `jsQR`.
+
+## Chạy và xuất bản
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+npm install
+npm run dev      # http://localhost:3000
+npm run build    # xuất web tĩnh vào thư mục out/
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Thư mục `out/` chỉ gồm HTML/CSS/JS, có thể đưa lên bất kỳ máy chủ tĩnh nào (Nginx, GitHub Pages, Netlify…).
+Tính năng quét bằng camera cần trang được phục vụ qua HTTPS (hoặc `localhost`).

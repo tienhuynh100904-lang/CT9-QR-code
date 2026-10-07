@@ -1,12 +1,13 @@
 import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
-  /* config options here */
+  // Xuất web tĩnh: `npm run build` tạo thư mục `out/` chỉ gồm HTML/CSS/JS.
+  // Không bật cacheComponents/partialPrefetching vì PPR không hỗ trợ chế độ export.
+  output: "export",
+  images: { unoptimized: true },
   experimental: {
     agentFeedback: true,
   },
-  cacheComponents: true,
-  partialPrefetching: true,
   turbopack: {
     rules: {
       "*.css": {
