@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { ArrowUp, BookMarked, Coffee, Info, Mail, QrCode, ShieldCheck } from "lucide-react";
 
 const REFS = [
@@ -79,7 +80,15 @@ export default function Footer() {
             <p className="mt-3 text-sm text-muted">
               Ngân hàng <b className="text-ink">MB</b>
             </p>
-            <p className="mono mt-1 text-lg font-bold tracking-wider text-ink">0966016561</p>
+            <p className="mono mt-1 text-lg font-bold tracking-wider text-ink">0966026561</p>
+            <Image
+              src="/images/qr-ct9-mb-crop.png"
+              alt="Mã VietQR nhận ủng hộ qua tài khoản MB của CT9"
+              width={750}
+              height={750}
+              className="mt-4 w-44 rounded-xl bg-white shadow-lg"
+            />
+            <p className="mt-2 text-xs text-dim">Quét bằng app ngân hàng bất kỳ</p>
           </div>
         </section>
       </div>
